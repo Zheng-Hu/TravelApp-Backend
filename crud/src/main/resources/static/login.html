@@ -23,13 +23,13 @@
             return
         }
         fetch('/login', {
-            method: "POST",//请求方式
-            headers: {//定制http请求的标头
+            method: "POST",
+            headers: {
                 "Content-Type": "application/json;charset=UTF-8"
             },
             body: JSON.stringify({name: name, password: pwd})
         }).then(res => res.text()).then(res => {
-            if (res) {  // res 不为null再去解析
+            if (res) {
                 let json = JSON.parse(res)
                 if (json.id) {
                     alert("账户或密码正确")

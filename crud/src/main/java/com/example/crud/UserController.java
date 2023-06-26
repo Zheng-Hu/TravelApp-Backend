@@ -20,17 +20,8 @@ public class UserController {
     @PostMapping("/login")
     public User login(@RequestBody User user, HttpServletRequest request) {
         User dbUser = userMapper.getUserByNameAndPassword(user.getName(), user.getPassword());
-        if (dbUser != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("user", dbUser); // 存储用户信息
-        }
         return dbUser;
     }
 
-    @GetMapping("/info")
-    public User getUserInfo(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        return (User) session.getAttribute("user");
-    }
 
 }
